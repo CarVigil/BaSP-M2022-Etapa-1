@@ -1,5 +1,8 @@
 # Become a Software Professional
 ## Week 1
 ### Landing page recreation
-I wrote the HTML code for the Landing Page created in Figma using tags like 'header', 'main', 'aside', 'section', and 'footer'. I chose the tags whose meaning would fit the content section.
-I didn´t add icons in this troubleshoot, but I add images to represent them.
+This week's problem consists of creating an HTML document that has the same content as the Landing Page of the screenflow made previously, using the desktop version, and adding all the content (title, subtitles, date, text, images, links, etc.) regarding the semantic elements of HTML and saving the progress in a public Github repository.
+
+
+## AUTHOR
+Carla Daiana Vigil - https://github.com/CarVigil/
