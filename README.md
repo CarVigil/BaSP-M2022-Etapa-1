@@ -5,4 +5,5 @@ This week's problem consists of creating an HTML document that has the same cont
 
 
 ## AUTHOR
-Carla Daiana Vigil - https://github.com/CarVigil/
+:woman_technologist: Carla Daiana Vigil  
+:octocat: https://github.com/CarVigil/
