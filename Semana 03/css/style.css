@@ -1,0 +1,157 @@
+/* 
+    1ro Selectores de elemento h1, p, devs, etc etc..
+    Luego por orden de aparición
+
+    Dentro de cara regla: {
+        propiedades position y display
+        Después van las reglas de "box-model": width, height, margin, padding, top, left, etc.
+        Luego las reglas de background y border.
+        A continuación las reglas de texto (font-size, text-shadow, etc).
+        Por último las demás reglas.
+    }
+*/
+body {
+    font-family: 'Roboto';
+    color: #373867;
+}
+h1 {
+    font-size: 60px;
+    font-weight: 700;
+}
+h2{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 35px;
+}
+h3{}
+p {
+    font-size: 20px;
+}
+header{
+    background-color: #373867;
+    padding: 15px;
+    width: 1320px;
+    top:0;
+    position: fixed;
+    z-index: 999;
+}
+aside{
+    top: 70px;
+    float: left;
+    width: 240px;
+    height: 600px;
+    background-color: #D9D9E2;
+    position: fixed;
+}
+main{
+    margin: 150px 50px 0 310px;
+}
+section{
+    margin-bottom: 50px;
+}
+footer{
+    background-color: #D9D9E2;
+    width: 1107px;
+}
+header span a {
+    font-size: 40px;
+    text-decoration: none;
+}
+#radium {
+    font-weight: 600;
+    color: #46a37c
+}
+#rocket {
+    font-weight: 300;
+    color: #AACE9B;
+}
+.navbar{
+    margin: 70px 25px;
+}
+.navbar-title {
+    border-bottom: #46a37c solid 5px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 35px;
+}
+.navbar nav ul li{
+    margin: 25px 0;
+    padding-bottom: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    border-bottom: #373867 solid 1.5px;
+}
+.navbar ul li a{
+    margin-bottom: 5px;
+    color: #373867;
+    text-decoration: none;
+}
+.navbar ul li a.active{
+    text-shadow: 0px 1.5px #46a37c;
+}
+.navbar address{
+    margin: 25px 0;
+    padding-bottom: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+}
+.about{
+    display: inline-block;
+    width: 400px;
+}
+.about h1 {
+    margin-bottom: 20px;
+}
+.subtitle{
+    margin-bottom: 30px;
+    width: 350px;
+    font-weight: 400;
+    line-height: 23.44px;
+}
+.about p{
+    line-height: 30px;
+}
+.about img{
+    width: 420px;
+    height: 370px;
+    object-fit: cover;
+    box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.6);
+}
+.container-img{
+    margin-right: 90px;
+    float: right;
+}
+.functionalities, .why-use{
+    margin: 50px 0;
+    border-bottom: #37386766 solid 1px;
+}
+.secondary-text{
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 18px;
+}
+.card{
+    display: inline-block;
+    margin: 50px 0;
+    width: 490px;
+}
+.card i, .card div{
+    display: inline-block;
+}
+.card i{
+    padding-right: 30px;
+    vertical-align: top;
+    font-size: 50px;
+}
+.card div{
+    width: 300px;
+}
+
+footer ul li {
+    display: inline-block;
+    padding-left: 50px;
+}
