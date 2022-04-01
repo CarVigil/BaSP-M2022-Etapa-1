@@ -1,13 +1,3 @@
-/* 
-
-    Dentro de cada regla: {
-        propiedades position y display
-        Después van las reglas de "box-model": width, height, margin, padding, top, left, etc.
-        Luego las reglas de background y border.
-        A continuación las reglas de texto (font-size, text-shadow, etc).
-        Por último las demás reglas.
-    }
-*/
 body {
     font-family: 'Roboto';
     color: #373867;
