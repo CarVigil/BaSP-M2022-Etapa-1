@@ -2,7 +2,7 @@
     1ro Selectores de elemento h1, p, devs, etc etc..
     Luego por orden de aparición
 
-    Dentro de cara regla: {
+    Dentro de cada regla: {
         propiedades position y display
         Después van las reglas de "box-model": width, height, margin, padding, top, left, etc.
         Luego las reglas de background y border.
@@ -24,7 +24,11 @@ h2{
     font-size: 30px;
     line-height: 35px;
 }
-h3{}
+h3{
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: 400;
+}
 p {
     font-size: 20px;
 }
@@ -36,6 +40,10 @@ header{
     position: fixed;
     z-index: 999;
 }
+header span a {
+    font-size: 40px;
+    text-decoration: none;
+}
 aside{
     top: 70px;
     float: left;
@@ -45,18 +53,27 @@ aside{
     position: fixed;
 }
 main{
-    margin: 150px 50px 0 310px;
+    margin: 200px 50px 0 310px;
 }
 section{
-    margin-bottom: 50px;
+    padding-bottom: 50px;
 }
 footer{
+    padding-left: 240px;
     background-color: #D9D9E2;
     width: 1107px;
 }
-header span a {
-    font-size: 40px;
-    text-decoration: none;
+footer ul li {
+    display: inline-block;
+    padding-left: 20px;
+}
+footer ul, footer p {
+    display: inline-block;
+}
+footer p{
+    margin-left: 100px;
+    margin-bottom: 20px;
+    font-size: 14px;
 }
 #radium {
     font-weight: 600;
@@ -65,6 +82,11 @@ header span a {
 #rocket {
     font-weight: 300;
     color: #AACE9B;
+}
+.menu-icon{
+    position: fixed;
+    margin: 25px 0 0 265px;
+    font-size: 36px;
 }
 .navbar{
     margin: 70px 25px;
@@ -125,7 +147,7 @@ header span a {
     margin-right: 90px;
     float: right;
 }
-.functionalities, .why-use{
+.section{
     margin: 50px 0;
     border-bottom: #37386766 solid 1px;
 }
@@ -136,22 +158,45 @@ header span a {
 }
 .card{
     display: inline-block;
-    margin: 50px 0;
+    margin: 25px 0;
     width: 490px;
 }
 .card i, .card div{
     display: inline-block;
 }
 .card i{
-    padding-right: 30px;
+    padding: 10px 25px 0 0;
     vertical-align: top;
     font-size: 50px;
 }
 .card div{
     width: 300px;
 }
-
-footer ul li {
+.about-us p, .about-us img{
     display: inline-block;
-    padding-left: 50px;
+    width: 450px;
+    
+}
+.about-us p{
+    margin-top: 40px;
+    vertical-align: top;
+}
+.about-us img{
+    vertical-align: top;
+    margin-left: 40px;
+}
+.large-body{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.column {
+    display: inline-block;
+}
+.company, .support{
+    margin-left: 340px;
+}
+.column ol li{
+    list-style: decimal;
+    list-style-position: inside;
 }
