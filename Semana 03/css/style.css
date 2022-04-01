@@ -1,6 +1,4 @@
 /* 
-    1ro Selectores de elemento h1, p, devs, etc etc..
-    Luego por orden de aparición
 
     Dentro de cada regla: {
         propiedades position y display
@@ -33,24 +31,23 @@ p {
     font-size: 20px;
 }
 header{
-    background-color: #373867;
-    padding: 15px;
-    width: 1320px;
-    top:0;
     position: fixed;
-    z-index: 999;
+    width: 1320px;
+    padding: 15px;
+    top:0;
+    background-color: #373867;
 }
 header span a {
     font-size: 40px;
     text-decoration: none;
 }
 aside{
-    top: 70px;
-    float: left;
+    position: fixed;
     width: 240px;
     height: 600px;
+    top: 70px;
+    float: left;
     background-color: #D9D9E2;
-    position: fixed;
 }
 main{
     margin: 200px 50px 0 310px;
@@ -59,9 +56,9 @@ section{
     padding-bottom: 50px;
 }
 footer{
+    width: 1107px;
     padding: 15px 0 16px 240px;
     background-color: #D9D9E2;
-    width: 1107px;
 }
 footer ul li {
     display: inline-block;
@@ -71,17 +68,16 @@ footer ul, footer p {
     display: inline-block;
 }
 footer p{
-    margin-left: 100px;
-    margin-bottom: 20px;
+    margin: 0 0 20px 100px;
     font-size: 14px;
 }
 #radium {
+    color: #46a37c;
     font-weight: 600;
-    color: #46a37c
 }
 #rocket {
-    font-weight: 300;
     color: #AACE9B;
+    font-weight: 300;
 }
 .menu-icon{
     position: fixed;
@@ -101,10 +97,10 @@ footer p{
 .navbar nav ul li{
     margin: 25px 0;
     padding-bottom: 10px;
+    border-bottom: #373867 solid 1.5px;
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
-    border-bottom: #373867 solid 1.5px;
 }
 .navbar ul li a{
     margin-bottom: 5px;
@@ -175,14 +171,13 @@ footer p{
 .about-us p, .about-us img{
     display: inline-block;
     width: 450px;
+    vertical-align: top;   
     
 }
 .about-us p{
     margin-top: 40px;
-    vertical-align: top;
 }
 .about-us img{
-    vertical-align: top;
     margin-left: 40px;
 }
 .large-body{
@@ -202,8 +197,8 @@ footer p{
 }
 .fa-brands{
     padding: 15px 17px;
-    font-size: 30px;
     border-radius: 44px;
     background-color: #FFFFFF;
     color: #D9D9E2;
+    font-size: 30px;
 }
