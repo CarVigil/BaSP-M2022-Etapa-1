@@ -59,7 +59,7 @@ section{
     padding-bottom: 50px;
 }
 footer{
-    padding-left: 240px;
+    padding: 15px 0 16px 240px;
     background-color: #D9D9E2;
     width: 1107px;
 }
@@ -199,4 +199,11 @@ footer p{
 .column ol li{
     list-style: decimal;
     list-style-position: inside;
+}
+.fa-brands{
+    padding: 15px 17px;
+    font-size: 30px;
+    border-radius: 44px;
+    background-color: #FFFFFF;
+    color: #D9D9E2;
 }
