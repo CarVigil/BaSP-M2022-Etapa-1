@@ -169,17 +169,23 @@
                 <h2>Ask for information</h2>
                 <form>
                     <div>
-                        <input type="text" id="name" name="name" placeholder="name">
-                        <input type="text" id="email" name="email" placeholder="email">
+                        <input type="text" id="name" name="name" placeholder="Name">
+                        <input type="text" id="email" name="email" placeholder="Email">
                     </div>                    
-                    <div>
+                    <div class="contact-area">
                         <p>Contact Area:</p>
-                        <input type="radio" id="humanResources" name="contactArea" value="Human Resources">
-                        <label for="humanResources">Human Resources</label>
-                        <input type="radio" id="systems" name="contactArea" value="Systems">
-                        <label for="systems">Systems</label>
-                        <input type="radio" id="commercialization" name="contactArea" value="commercialization">
-                        <label for="commercialization">commercialization</label>
+                        <span class="radio">
+                            <input type="radio" id="humanResources" name="contactArea" value="Human Resources">
+                            <label for="humanResources">Human Resources</label>
+                        </span>
+                        <span class="radio">
+                            <input type="radio" id="systems" name="contactArea" value="Systems">
+                            <label for="systems">Systems</label>
+                        </span>
+                        <span>
+                            <input type="radio" id="commercialization" name="contactArea" value="commercialization">
+                            <label for="commercialization">Commercialization</label>
+                        </span>                        
                     </div>            
                     <textarea name="message" id="message" cols="30" rows="10" placeholder="Enter your message"></textarea>
                     <div>
