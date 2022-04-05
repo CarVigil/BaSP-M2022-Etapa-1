@@ -74,8 +74,18 @@ input[type="submit"]{
     background-color: #AACE9B;
     border: #AACE9B solid 1px;
 }
-input[type="button"]{
+input[type="submit"]:hover{
+    margin-right: 15px;
+    background-color: #FFFFFF;
     border: #373867 solid 1px;
+}
+input[type="button"]{
+    background-color: #FFFFFF;
+    border: #373867 solid 1px;
+}
+input[type="button"]:hover{
+    background-color: #AACE9B;
+    border: #AACE9B solid 1px;
 }
 textarea{
     margin-top: 25px;
