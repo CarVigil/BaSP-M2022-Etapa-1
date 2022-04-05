@@ -39,6 +39,14 @@ aside{
     float: left;
     background-color: #D9D9E2;
 }
+address ul li{
+    margin: 15px 0;
+}
+address ul li a{
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
 main{
     margin: 200px 50px 0 310px;
 }
@@ -75,9 +83,10 @@ textarea{
     font-family: 'Roboto';
 }
 footer{
-    width: 1107px;
+    width: 100%;
     padding: 15px 0 16px 240px;
     background-color: #D9D9E2;
+    box-sizing: border-box;
 }
 footer ul li{
     display: inline-block;
@@ -98,8 +107,11 @@ footer p{
 .navbar{
     margin: 70px 25px;
 }
+.navbar div {
+    margin-bottom: 50px;
+}
 .navbar-title{
-    border-bottom: #46a37c solid 5px;
+    border-bottom: #AACE9B solid 5px;
     font-style: normal;
     font-weight: 700;
     font-size: 30px;
@@ -119,7 +131,7 @@ footer p{
     text-decoration: none;
 }
 .navbar ul li a.active{
-    text-shadow: 0px 1.5px #46a37c;
+    text-shadow: 0px 1.5px #AACE9B;
 }
 .navbar address{
     margin: 25px 0;
