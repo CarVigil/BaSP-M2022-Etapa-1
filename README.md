@@ -7,8 +7,11 @@ This week's problem consists of creating an HTML document that has the same cont
 ### Adding styles for the Landing Page
 This week we have to give styles to the HTML created before.
 
+## Week 4
+### Adding styles for the Landing Page using Flexbox
+
 ## AUTHOR
-:woman_technologist: Carla Daiana Vigil  
+:woman_technologist: Carla Daiana Vigil
 :octocat: https://github.com/CarVigil/
 
 ## Technologies used at the moment
