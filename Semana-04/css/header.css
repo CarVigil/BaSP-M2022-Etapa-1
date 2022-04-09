@@ -1,0 +1,19 @@
+header{
+    position: fixed;
+    width: 100%;
+    padding: 15px;
+    top:0;
+    background-color: #373867;
+}
+header span a{
+    font-size: 40px;
+    text-decoration: none;
+}
+#radium{
+    color: #46a37c;
+    font-weight: 600;
+}
+#rocket {
+    color: #AACE9B;
+    font-weight: 300;
+}

@@ -1,0 +1,14 @@
+aside{
+    width: 25%;
+    display: flex;
+    padding-top: 80px;
+    background-color: #D9D9E2;
+}
+.fixed{
+    position: fixed;
+    width: 25%;
+}
+.navbar{
+    display: flex;
+    flex-direction: column;
+}

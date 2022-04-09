@@ -1,0 +1,17 @@
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 25px 0;
+    background-color: #D9D9E2;
+}
+footer ul{
+    display: flex;
+}
+footer p{
+    font-size: 14px;
+}
+.footer{
+    justify-content: flex-end;
+}
