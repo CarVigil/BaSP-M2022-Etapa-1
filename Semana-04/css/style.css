@@ -1,47 +1,62 @@
-body{
+body {
   font-family: 'Roboto', sans-serif;
   color: #373867;
 }
-h1{
+h1 {
   font-size: 60px;
   font-weight: 700;
 }
-h2{
+h2 {
   font-style: normal;
   font-weight: 700;
   font-size: 30px;
   line-height: 35px;
 }
-h3{
+h3 {
   margin: 10px 0;
   font-size: 20px;
   font-weight: 400;
 }
-p{
+p {
   font-size: 20px;
 }
-.container{
+.container {
   width: 100%;
   display: flex;
 }
-.content{
+.content {
   width: 75%;
   display: flex;
   flex-direction: column;
 }
-@media only screen and (min-width: 780px) {
+.menu-icon {
+  padding-top: 100px;
+  font-size: 2em;
+}
+@media  screen and (min-width: 780px) {
   .menu-icon {
     display: none;
   }
 }
-@media only screen and (max-width: 780px) {
-  .container aside {
-      display: none;
-    }
+@media  screen and (max-width: 780px) {
+  .container .content{
+    width: 100%;
   }
-@media only screen and (max-width: 600px) {
-    .container  {
-        display: flex;
-        flex-direction: column;
-      }
+  .container aside {
+    display: none;
+  }
+  .container main {
+    margin-top: 100px;
+  }
+}
+@media  screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+  .card-container{
+    flex-direction: column;
+  }
+  .card-container .card{
+    width: 100%;
+  }
 }
