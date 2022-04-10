@@ -4,6 +4,7 @@ header{
     padding: 15px;
     top:0;
     background-color: #373867;
+    box-sizing: border-box;
 }
 header span a{
     font-size: 40px;

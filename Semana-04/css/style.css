@@ -50,13 +50,10 @@ p {
   }
 }
 @media  screen and (max-width: 600px) {
-  .container {
+  .container, .card-container, .fields {
     flex-direction: column;
   }
-  .card-container{
-    flex-direction: column;
-  }
-  .card-container .card{
+  .card-container .card, .fields input[type="text"]{
     width: 100%;
   }
 }
