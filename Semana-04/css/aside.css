@@ -1,13 +1,9 @@
 aside{
     display: flex;
     justify-content: center;
-    width: 25%;
-    padding-top: 80px;
+    flex: 1;
+    padding: 100px 30px;
     background-color: #D9D9E2;
-}
-.fixed{
-    position: fixed;
-    width: 18%;
 }
 .navbar{
     display: flex;
