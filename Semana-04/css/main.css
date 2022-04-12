@@ -21,12 +21,10 @@ input[type="submit"], input[type="button"]{
     text-transform: uppercase;
 }
 input[type="submit"]{
-    margin-right: 15px;
     background-color: #AACE9B;
     border: #AACE9B solid 1px;
 }
 input[type="submit"]:hover{
-    margin-right: 15px;
     background-color: #FFFFFF;
     border: #373867 solid 1px;
 }
