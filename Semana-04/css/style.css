@@ -56,11 +56,23 @@ p {
   .container, .card-container, .fields {
     flex-direction: column;
   }
+  .content footer{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .main-flex .content footer .copy{
+    margin-top: 25px;
+    justify-content: center;
+    flex-basis: 100%;
+  }
 }
 @media  screen and (max-width: 600px) {
   .two-column,.radio-buttons, .menu-footer{
     flex-direction: column;
-    justify-content: center;
+  }
+  .menu-footer{
+    flex-direction: column;
+    align-items: center;
   }
   .two-column .about, .two-column .about-us{
     width: 100%;

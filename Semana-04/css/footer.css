@@ -29,10 +29,11 @@ footer .social{
     flex-wrap: nowrap;
     justify-content: space-evenly;
     flex: 1 0 40%;
-    padding-left: 25px;
+    padding: 0 25px;
 }
 footer .copy{
     display: flex;
     justify-content: flex-start;
-    flex-basis: 55%;
+    flex-basis: 52%;
+    padding: 0 5px;
 }
