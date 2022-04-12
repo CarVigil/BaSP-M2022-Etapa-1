@@ -56,7 +56,7 @@ p {
   }
 }
 @media  screen and (max-width: 600px) {
-  .two-column,.radio-buttons{
+  .two-column,.radio-buttons, .menu-footer{
     flex-direction: column;
     justify-content: center;
   }

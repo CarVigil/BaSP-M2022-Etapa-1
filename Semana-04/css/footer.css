@@ -10,9 +10,29 @@ footer{
 footer ul{
     display: flex;
 }
-footer p{
-    font-size: 14px;
+footer div p{
+    font-size: 1em;
+    text-align: center;
 }
 .footer{
     justify-content: flex-end;
+}
+.fa-brands{
+    padding: 15px 17px;
+    border-radius: 44px;
+    background-color: #FFFFFF;
+    color: #D9D9E2;
+    font-size: 30px;
+}
+footer .social{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    flex: 1 0 40%;
+    padding-left: 25px;
+}
+footer .copy{
+    display: flex;
+    justify-content: flex-start;
+    flex-basis: 55%;
 }
