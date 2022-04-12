@@ -12,7 +12,6 @@ footer ul{
 }
 footer div p{
     font-size: 1em;
-    text-align: center;
 }
 .footer{
     justify-content: flex-end;
@@ -24,14 +23,14 @@ footer div p{
     color: #D9D9E2;
     font-size: 30px;
 }
-footer .social{
+.social{
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
     flex: 1 0 40%;
     padding: 0 25px;
 }
-footer .copy{
+.copy{
     display: flex;
     justify-content: flex-start;
     flex-basis: 52%;
