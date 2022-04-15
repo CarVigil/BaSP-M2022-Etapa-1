@@ -34,13 +34,13 @@ console.log('\n-Exercise 2.c:')
 console.log(subCadena);
 
 // ejercicio d
-var cadena3 = "cada día sabemos más y entendemos menos";
+var cadena3 = 'cada día sabemos más y entendemos menos';
 var cadena4 = cadena3[0].toUpperCase() + cadena3.substring(1);
 console.log('\n-Exercise 2.d:')
 console.log(cadena4);
 
 // ejercicio e
-var cadena5 = "lo esencial es invisible a los ojos";
+var cadena5 = 'lo esencial es invisible a los ojos';
 var pos = cadena5.indexOf(' ');
 console.log('\n-Exercise 2.e:')
 console.log(pos);
@@ -50,7 +50,7 @@ var cadena6 = 'eLECTROSCOPIO eLECTRÓNICO';
 var esp = cadena6.indexOf(' ');
 var cadena7 = cadena6[0].toUpperCase()
             +cadena6.substring(1, esp).toLowerCase()
-            +" "
+            +''
             +cadena6[esp+=1].toUpperCase()
             +cadena6.substring(esp+=1).toLowerCase();
 console.log('\n-Exercise 2.f:');
