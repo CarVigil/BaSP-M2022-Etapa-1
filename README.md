@@ -10,7 +10,14 @@ This week we have to give styles to the HTML created before.
 ## Week 4
 ### Adding styles for the Landing Page using Flexbox
 This week we have to replicate the same landing page but using flexbox to make it responsive.
+
 Be able to see the design of the landing by following this link: https://carvigil.github.io/BaSP-M2022-Etapa-1/Semana-04/index.html
+
+## Week 5
+### Working with JavaScript
+This week we must solve the JavaScript exercises, applying the concepts learned from the async material.
+
+https://carvigil.github.io/BaSP-M2022-Etapa-1/Semana-05/index.html
 
 ## AUTHOR
 :woman_technologist: Carla Daiana Vigil
