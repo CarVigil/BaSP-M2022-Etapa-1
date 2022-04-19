@@ -71,7 +71,7 @@ textarea{
     box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.6);
 }
 .about-us img{
-    margin: 25px;
+    margin: 25px 0;
     width: 100%;
 }
 .secondary-text{
