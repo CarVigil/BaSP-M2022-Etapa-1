@@ -26,3 +26,4 @@ https://carvigil.github.io/BaSP-M2022-Etapa-1/Semana-05/index.html
 ## Technologies used at the moment
 - HTML
 - CSS
+- JavaScript
