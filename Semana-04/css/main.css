@@ -50,11 +50,10 @@ textarea{
     justify-content: space-between;
 }
 .two-column .about:first-child{
-    margin-right: 25px;
+    margin-right: 20px;
 }
 .about, .about-us{
-    flex: 0 1 auto;
-    width: 48%;
+    flex: 0 1 48%;
 }
 .about h1 {
     margin-bottom: 20px;
