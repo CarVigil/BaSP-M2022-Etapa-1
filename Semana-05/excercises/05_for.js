@@ -19,7 +19,7 @@ for (var i = 0; i < verbos.length; i++) {
 
 // ejercicio b
 for (var i = 0; i < verbos.length; i++) {
-    window.alert(i+1 +': ' +verbos[i].substring(0,1).toUpperCase()+verbos[i].substring(1));
+    window.alert(i+1 +': ' +verbos[i].substring(0,1).toUpperCase()+verbos[i].substring(1).toLowerCase());
 }
 // ejercicio c
 var sentence = '';
