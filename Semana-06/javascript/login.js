@@ -75,10 +75,11 @@ email.addEventListener('focus', fixingError);
 pass.addEventListener('focus', fixingErrorPass);
 
 function fixingError(){
-    errorEmail.classList.add('hide');
+    errorEmail.style.display = 'none';
+    requiredEmail.style.display = 'none';
 }
 
-function fixingErrorPass(e){
+function fixingErrorPass(){
     errorPass.style.display = 'none';
     requiredPass.style.display = 'none';
 }
