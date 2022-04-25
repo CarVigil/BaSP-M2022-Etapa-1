@@ -5,10 +5,14 @@ main{
 div.content {
     background-color: #C9C9D6;
 }
+p {
+    line-height: 1.5em;
+    font-size: 1em;
+}
 .login-form {
     display: flex;
     flex-direction: column;
-    padding: 60px 50px;
+    padding: 50px;
     background-color: #FFF;
     border-radius: 25px;
 }
@@ -28,14 +32,14 @@ form{
 label{
     margin-bottom: 10px;
 }
-input[type="text"]{
+input[type="text"],input[type="password"]{
     justify-self: center;
     height: 35px;
     width: 100%;
     min-width: 250px;
     margin-bottom: 25px;
 }
-input[type="button"]{
+input[type="submit"]{
     align-self: center;
     padding: 10px 20px;
     margin: 15px 0;
@@ -47,7 +51,7 @@ input[type="button"]{
     font-weight: 400;
     text-transform: uppercase;
 }
-input[type="button"]:hover{
+input[type="submit"]:hover{
     background-color: #FFFFFF;
     border: #373867 solid 1px;
 }
@@ -60,4 +64,28 @@ input[type="button"]:hover{
     color: #373867;
     text-decoration: none;
     background-color: #FAF9F9;
+}
+.message{
+    padding: 10px;
+    margin: 10px 0;
+    border: #6a6bc0 solid 2px;
+    border-radius: 5px;
+}
+.error-email, .error-pass, .required{
+    display: none;
+    color:red;
+}
+.error{
+    border: red solid 1px;
+}
+.valid{
+    border: green solid 1px;
+}
+.success{
+    margin-bottom: 10px;
+    color: green;
+}
+.invalid{
+    margin-bottom: 10px;
+    color: red;
 }

@@ -79,18 +79,23 @@
                     <section>
                         <div class="login-form">
                             <h2>Login</h2>
-                            <form>
+                            <form id="form">
                                 <div class="fields">
                                     <label for="email">
                                         Email
                                     </label>
+                                    <span class="error-email" id="error-email">The email is not valid</span>
+                                    <span class="required" id="required-email">This field is required</span>
                                     <input type="text" id="email" name="email" placeholder="Email">
                                     <label for="password">
                                         Password
                                     </label>
-                                    <input type="text" id="password" name="password" placeholder="Password">
+                                    <span class="error-pass" id="error-pass">The password is not valid</span>
+                                    <span class="required" id="required-pass">This field is required</span>
+                                    <input type="password" id="password" name="password" placeholder="Password">
                                 </div>
-                                <input type="button" name="button" id="button" value="login">
+                                <span id="message"></span>
+                                <input type="submit" name="button" id="button" value="login">
                                 <div class="recovery">
                                     <a href="#">Recovery password</a>
                                 </div>
@@ -128,5 +133,6 @@
             </div>
         </div>
     </div>
+    <script src="../javascript/login.js"></script>
 </body>
 </html>
