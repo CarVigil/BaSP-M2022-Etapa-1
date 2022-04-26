@@ -19,8 +19,13 @@ This week we must solve the JavaScript exercises, applying the concepts learned 
 
 https://carvigil.github.io/BaSP-M2022-Etapa-1/Semana-05/index.html
 
+## Week 6
+### Adding behaviour to the site
+This week we have create the Sign up and form login and validate both whit JavaScript
+https://carvigil.github.io/BaSP-M2022-Etapa-1/Semana-06/views/index.html
+
 ## AUTHOR
-:woman_technologist: Carla Daiana Vigil
+:woman_technologist: Carla Daiana Vigil  
 :octocat: https://github.com/CarVigil/
 
 ## Technologies used at the moment
