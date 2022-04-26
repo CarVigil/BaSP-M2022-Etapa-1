@@ -25,17 +25,18 @@ div.content {
     display: flex;
     flex-direction: column;
     flex-basis: 48%;
+    margin-bottom: 15px;
 }
 .col1{
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
+    margin-bottom: 15px;
 }
 input[type="text"], input{
     justify-self: center;
     height: 35px;
     width: 100%;
-    margin-bottom: 15px;
 }
 input[type="button"]{
     align-self: center;
@@ -52,6 +53,31 @@ input[type="button"]{
 input[type="button"]:hover{
     background-color: #FFFFFF;
     border: #373867 solid 1px;
+}
+.error{
+    border: red solid 1px;
+}
+.valid{
+    border: green solid 1px;
+}
+.error-input, .required {
+    font-size: 0.75em;
+    display: none;
+    color:red;
+}
+.message{
+    padding: 10px;
+    margin: 10px 0;
+    border: #6a6bc0 solid 2px;
+    border-radius: 5px;
+}
+.success{
+    margin-bottom: 10px;
+    color: green;
+}
+.invalid{
+    margin-bottom: 10px;
+    color: red;
 }
 @media  screen and (min-width: 780px) {
     main{
