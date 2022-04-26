@@ -179,7 +179,6 @@ address.addEventListener('blur', validateAddress);
 
 function validateAddress() {
     var cont = 0;
-    var contnum = 0;
     if (address.value === '') {
         document.getElementById('required-address').style.display = 'block';
         address.classList.add('error');
@@ -191,16 +190,11 @@ function validateAddress() {
             return false;
         } else {
             for (var i = 0; i < address.value.indexOf(' '); i++) {
-                if (!alphabetic.includes(address.value[i]) && address.value[i] != ' ') {
+                if (!alphabetic.includes(address.value[i]) && address.value[i] != ' ' && !numeric.includes(address.value[i])) {
                     cont++;
                 }
             }
-            for (var i = address.value.indexOf(' ') + 1; i < address.value.length; i++) {
-                if (!numeric.includes(address.value[i])) {
-                    contnum++;
-                }
-            }
-            if (address.value.length < 5 || cont != 0 || contnum != 0) {
+            if (address.value.length < 5 || cont != 0) {
                 document.getElementById('error-address').style.display = 'block';
                 address.classList.add('error');
                 return false;
