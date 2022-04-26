@@ -33,32 +33,32 @@ document.getElementById('form').addEventListener('submit', (e) => {
         && validatePhone() && validateAddress() && validateLocation() && validateZip()
         && validateEmail() && validatePass() && validateRepeatPass()) {
         document.getElementById('message').classList.add('message');
-        document.getElementById('message').innerHTML ='<p class="success"><i class="fa-solid fa-check"></i> Success</p><p>'
-                                                        +'Name: '+formName.value +'</p><p>'
-                                                        +'Lastname: '+lastname.value+'</p><p>'
-                                                        +'DNI: '+dni.value +'</p><p>'
-                                                        +'Birth date: '+birth.value+'</p><p>'
-                                                        +'Phone: '+address.value+'</p><p>'
-                                                        +'Location: '+loc.value +'</p><p>'
-                                                        +'Zip code: '+zip.value+'</p><p>'
-                                                        +'Email: '+email.value +'</p><p>'
-                                                        +'Password: '+pass.value+'</p><p>'
-                                                        +'RepeatPassword: '+repeatPass.value+'</p><p>';
+        document.getElementById('message').innerHTML = '<p class="success"><i class="fa-solid fa-check"></i> Success</p><p>'
+            + 'Name: ' + formName.value + '</p><p>'
+            + 'Lastname: ' + lastname.value + '</p><p>'
+            + 'DNI: ' + dni.value + '</p><p>'
+            + 'Birth date: ' + birth.value + '</p><p>'
+            + 'Phone: ' + address.value + '</p><p>'
+            + 'Location: ' + loc.value + '</p><p>'
+            + 'Zip code: ' + zip.value + '</p><p>'
+            + 'Email: ' + email.value + '</p><p>'
+            + 'Password: ' + pass.value + '</p><p>'
+            + 'RepeatPassword: ' + repeatPass.value + '</p><p>';
     } else if (!validateName() || !validateLastname() || !validateDni() || !validateDate()
-    || !validatePhone() || !validateAddress() || !validateLocation() || !validateZip()
-    || !validateEmail() || !validatePass() || !validateRepeatPass()) {
+        || !validatePhone() || !validateAddress() || !validateLocation() || !validateZip()
+        || !validateEmail() || !validatePass() || !validateRepeatPass()) {
         document.getElementById('message').classList.add('message');
-        document.getElementById('message').innerHTML ='<p class="invalid"><i class="fa-solid fa-xmark"></i> Error. Wrong data.</p><p>'
-                                                        +'Name: '+formName.value +'</p><p>'
-                                                        +'Lastname: '+lastname.value+'</p><p>'
-                                                        +'DNI: '+dni.value +'</p><p>'
-                                                        +'Birth date: '+birth.value+'</p><p>'
-                                                        +'Phone: '+address.value+'</p><p>'
-                                                        +'Location: '+loc.value +'</p><p>'
-                                                        +'Zip code: '+zip.value+'</p><p>'
-                                                        +'Email: '+email.value +'</p><p>'
-                                                        +'Password: '+pass.value+'</p><p>'
-                                                        +'RepeatPassword: '+repeatPass.value+'</p><p>';
+        document.getElementById('message').innerHTML = '<p class="invalid"><i class="fa-solid fa-xmark"></i> Error. Wrong data.</p><p>'
+            + 'Name: ' + formName.value + '</p><p>'
+            + 'Lastname: ' + lastname.value + '</p><p>'
+            + 'DNI: ' + dni.value + '</p><p>'
+            + 'Birth date: ' + birth.value + '</p><p>'
+            + 'Phone: ' + address.value + '</p><p>'
+            + 'Location: ' + loc.value + '</p><p>'
+            + 'Zip code: ' + zip.value + '</p><p>'
+            + 'Email: ' + email.value + '</p><p>'
+            + 'Password: ' + pass.value + '</p><p>'
+            + 'RepeatPassword: ' + repeatPass.value + '</p><p>';
     }
 })
 formName.addEventListener('blur', validateName);
@@ -304,10 +304,10 @@ function validatePass() {
 
 repeatPass.addEventListener('blur', validateRepeatPass);
 function validateRepeatPass() {
+    var passLength = repeatPass.value.length;
     var cont = 0;
     var letters = 0;
     var numbers = 0;
-    var passLength = repeatPass.value.length;
     for (var i = 0; i < passLength; i++) {
         if (!alphabetic.includes(repeatPass.value[i]) && !numeric.includes(repeatPass.value[i])) {
             cont++;
@@ -321,6 +321,10 @@ function validateRepeatPass() {
     }
     if (repeatPass.value === '') {
         document.getElementById('required-rpass').style.display = 'block';
+        document.getElementById('repeat-pass').classList.add('error');
+        return false;
+    } else if (passLength < 8 || cont != 0 || letters == 0 || numbers == 0) {
+        document.getElementById('error-rpass').style.display = 'block';
         document.getElementById('repeat-pass').classList.add('error');
         return false;
     } else if (pass.value != repeatPass.value) {
@@ -400,6 +404,7 @@ function fixingPass() {
 
 repeatPass.addEventListener('focus', fixingRepeatPass);
 function fixingRepeatPass() {
+    document.getElementById('error-rpass').style.display = 'none';
     document.getElementById('not-match').style.display = 'none';
     document.getElementById('required-rpass').style.display = 'none';
 }
