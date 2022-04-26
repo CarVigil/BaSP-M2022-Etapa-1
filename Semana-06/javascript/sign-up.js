@@ -32,7 +32,6 @@ document.getElementById('form').addEventListener('submit', (e) => {
     if (validateName() && validateLastname() && validateDni() && validateDate()
         && validatePhone() && validateAddress() && validateLocation() && validateZip()
         && validateEmail() && validatePass() && validateRepeatPass()) {
-            console.log('hola');
         document.getElementById('message').classList.add('message');
         document.getElementById('message').innerHTML ='<p class="success"><i class="fa-solid fa-check"></i> Success</p><p>'
                                                         +'Name: '+formName.value +'</p><p>'
@@ -43,12 +42,11 @@ document.getElementById('form').addEventListener('submit', (e) => {
                                                         +'Location: '+loc.value +'</p><p>'
                                                         +'Zip code: '+zip.value+'</p><p>'
                                                         +'Email: '+email.value +'</p><p>'
-                                                        +'Password '+pass.value+'</p><p>'
-                                                        +'RepeatPassword '+repeatPass.value+'</p><p>';
+                                                        +'Password: '+pass.value+'</p><p>'
+                                                        +'RepeatPassword: '+repeatPass.value+'</p><p>';
     } else if (!validateName() || !validateLastname() || !validateDni() || !validateDate()
     || !validatePhone() || !validateAddress() || !validateLocation() || !validateZip()
     || !validateEmail() || !validatePass() || !validateRepeatPass()) {
-        console.log('hola2');
         document.getElementById('message').classList.add('message');
         document.getElementById('message').innerHTML ='<p class="invalid"><i class="fa-solid fa-xmark"></i> Error. Wrong data.</p><p>'
                                                         +'Name: '+formName.value +'</p><p>'
@@ -59,8 +57,8 @@ document.getElementById('form').addEventListener('submit', (e) => {
                                                         +'Location: '+loc.value +'</p><p>'
                                                         +'Zip code: '+zip.value+'</p><p>'
                                                         +'Email: '+email.value +'</p><p>'
-                                                        +'Password '+pass.value+'</p><p>'
-                                                        +'RepeatPassword '+repeatPass.value+'</p><p>';
+                                                        +'Password: '+pass.value+'</p><p>'
+                                                        +'RepeatPassword: '+repeatPass.value+'</p><p>';
     }
 })
 formName.addEventListener('blur', validateName);
@@ -150,6 +148,7 @@ function validateDate() {
         birth.classList.add('error');
         return false;
     } else {
+        birth.classList.add('valid');
         return true;
     }
 }

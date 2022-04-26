@@ -38,7 +38,7 @@ input[type="text"], input{
     height: 35px;
     width: 100%;
 }
-input[type="button"]{
+input[type="submit"]{
     align-self: center;
     padding: 10px 20px;
     margin: 15px 0;
@@ -50,7 +50,7 @@ input[type="button"]{
     font-weight: 400;
     text-transform: uppercase;
 }
-input[type="button"]:hover{
+input[type="submit"]:hover{
     background-color: #FFFFFF;
     border: #373867 solid 1px;
 }
@@ -61,15 +61,16 @@ input[type="button"]:hover{
     border: green solid 1px;
 }
 .error-input, .required {
-    font-size: 0.75em;
     display: none;
     color:red;
+    font-size: 0.75em;
 }
 .message{
     padding: 10px;
     margin: 10px 0;
     border: #6a6bc0 solid 2px;
     border-radius: 5px;
+    font-size: 0.7em;
 }
 .success{
     margin-bottom: 10px;
