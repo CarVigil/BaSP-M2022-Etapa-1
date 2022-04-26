@@ -21,7 +21,7 @@ https://carvigil.github.io/BaSP-M2022-Etapa-1/Semana-05/index.html
 
 ## Week 6
 ### Adding behaviour to the site
-This week we have create the Sign up and form login and validate both whit JavaScript
+This week we have to create Sign up and Login form and validate both whit JavaScript  
 https://carvigil.github.io/BaSP-M2022-Etapa-1/Semana-06/views/index.html
 
 ## AUTHOR
