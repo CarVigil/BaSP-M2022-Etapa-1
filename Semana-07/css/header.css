@@ -1,0 +1,27 @@
+header{
+    position: fixed;
+    width: 100%;
+    padding: 15px;
+    top:0;
+    background-color: #373867;
+    box-sizing: border-box;
+}
+header span a{
+    font-size: 40px;
+    text-decoration: none;
+}
+.menu-icon{
+    align-self: flex-start;
+    margin-left: 15px;
+    padding-top: 100px;
+    color: #AACE9B;
+    font-size: 2em;
+  }
+#radium{
+    color: #46a37c;
+    font-weight: 600;
+}
+#rocket {
+    color: #AACE9B;
+    font-weight: 300;
+}

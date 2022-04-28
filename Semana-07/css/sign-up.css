@@ -1,0 +1,93 @@
+main{
+    display: flex;
+    align-items: center;
+    margin: 150px 50px 50px 50px;
+}
+div.content {
+    background-color: #C9C9D6;
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 60px;
+    margin-bottom: 50px;
+    width: 100%;
+    background-color: #FFF;
+    border-radius: 25px;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 auto;
+    justify-content: space-between;
+}
+.col {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 48%;
+    margin-bottom: 15px;
+}
+.col1{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    margin-bottom: 15px;
+}
+input[type="text"], input{
+    justify-self: center;
+    height: 35px;
+    width: 100%;
+}
+input[type="submit"]{
+    align-self: center;
+    padding: 10px 20px;
+    margin: 15px 0;
+    width: 50%;
+    background-color: #AACE9B;
+    border: #AACE9B solid 1px;
+    border-radius: 5px;
+    color: #373867;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+input[type="submit"]:hover{
+    background-color: #FFFFFF;
+    border: #373867 solid 1px;
+}
+.error{
+    border: red solid 1px;
+}
+.valid{
+    border: green solid 1px;
+}
+.error-input, .required {
+    display: none;
+    color:red;
+    font-size: 0.75em;
+}
+.message{
+    padding: 10px;
+    margin: 10px 0;
+    border: #6a6bc0 solid 2px;
+    border-radius: 5px;
+    font-size: 0.7em;
+}
+.success{
+    margin-bottom: 10px;
+    color: green;
+}
+.invalid{
+    margin-bottom: 10px;
+    color: red;
+}
+@media  screen and (min-width: 780px) {
+    main{
+        min-width: 600px;
+    }
+
+}
+@media  screen and (max-width: 480px) {
+    .col{
+        flex-basis: 100%;
+    }
+}
