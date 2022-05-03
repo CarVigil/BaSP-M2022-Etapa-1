@@ -29,54 +29,106 @@ var alphanumeric = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
 document.getElementById('form').addEventListener('submit', (e) => {
     e.preventDefault();
     var formatDate = birth.value.split('-');
-    var dob = formatDate.slice(1, 2) +'/' +formatDate.slice(2) +'/' +formatDate.slice(0, 1);
+    var dob = formatDate.slice(1, 2) + '/' + formatDate.slice(2) + '/' + formatDate.slice(0, 1);
     if (validateName() && validateLastname() && validateDni() && validateDate()
         && validatePhone() && validateAddress() && validateLocation() && validateZip()
         && validateEmail() && validatePass() && validateRepeatPass()) {
         fetch(`https://basp-m2022-api-rest-server.herokuapp.com/signup?name=${formName.value}&lastName=${lastname.value}&dni=${dni.value}&dob=${dob}&phone=${phone.value}&address=${address.value}&city=${loc.value}&zip=${zip.value}&email=${email.value}&password=${password.value}`)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('modal').style.display = 'block';
-            document.getElementById('close').onclick = function () {
-                document.getElementById('modal').style.display = 'none';
-            }
-            document.getElementById('message').classList.add('message');
-            document.getElementById('message').innerHTML = '<p>'+'Name: ' + formName.value + '</p><p>'
-            + 'Lastname: ' + lastname.value + '</p><p>'
-            + 'DNI: ' + dni.value + '</p><p>'
-            + 'Birth date: ' + birth.value + '</p><p>'
-            + 'Phone: ' + address.value + '</p><p>'
-            + 'Location: ' + loc.value + '</p><p>'
-            + 'Zip code: ' + zip.value + '</p><p>'
-            + 'Email: ' + email.value + '</p><p>'
-            + 'Password: ' + pass.value + '</p><p>'
-            + 'RepeatPassword: ' + repeatPass.value + '</p><p>';
-                if (data.success){
-                    document.getElementById('msg-validation').innerHTML = '<p class="success"><i class="fa-solid fa-check"></i> '+data.msg+'</p>';
-                } else {
-                    document.getElementById('msg-validation').innerHTML = '<p class="invalid"><i class="fa-solid fa-xmark"></i> '+data.msg+'</p>';
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('modal').style.display = 'block';
+                document.getElementById('close').onclick = function () {
+                    document.getElementById('modal').style.display = 'none';
                 }
-        })
+                document.getElementById('message').classList.add('message');
+                document.getElementById('message').innerHTML =
+                '<p class="success"><i class="fa-solid fa-check"></i> '+ data.msg + '</p>';
+                document.getElementById('message').innerHTML += '<p>Name: ' + formName.value
+                    + '</p><p>Lastname: ' + lastname.value
+                    + '</p><p>DNI: ' + dni.value
+                    + '</p><p>Birth date: ' + birth.value
+                    + '</p><p>Phone: ' + address.value
+                    + '</p><p>Location: ' + loc.value
+                    + '</p><p>Zip code: ' + zip.value
+                    + '</p><p>Email: ' + email.value
+                    + '</p><p>Password: ' + pass.value
+                    + '</p><p>RepeatPassword: ' + repeatPass.value + '</p>';
+            })
             .catch(error => {
                 console.error(error);
             });
-    } else if (!validateName() || !validateLastname() || !validateDni() || !validateDate()
-        || !validatePhone() || !validateAddress() || !validateLocation() || !validateZip()
-        || !validateEmail() || !validatePass() || !validateRepeatPass()) {
-        document.getElementById('message').classList.add('message');
-        document.getElementById('message').innerHTML = '<p class="invalid"><i class="fa-solid fa-xmark"></i> Error. Wrong data.</p><p>'
-            + 'Name: ' + formName.value + '</p><p>'
-            + 'Lastname: ' + lastname.value + '</p><p>'
-            + 'DNI: ' + dni.value + '</p><p>'
-            + 'Birth date: ' + birth.value + '</p><p>'
-            + 'Phone: ' + address.value + '</p><p>'
-            + 'Location: ' + loc.value + '</p><p>'
-            + 'Zip code: ' + zip.value + '</p><p>'
-            + 'Email: ' + email.value + '</p><p>'
-            + 'Password: ' + pass.value + '</p><p>'
-            + 'RepeatPassword: ' + repeatPass.value + '</p><p>';
+    } else {
+        document.getElementById('modal').style.display = 'block';
+        document.getElementById('close').onclick = function () {
+            document.getElementById('modal').style.display = 'none';
+        }
+        if (!validateName() || !validateLastname() || !validateDni() || !validateDate()
+            || !validatePhone() || !validateAddress() || !validateLocation() || !validateZip()
+            || !validateEmail() || !validatePass() || !validateRepeatPass()) {
+            document.getElementById('message').classList.add('message');
+            document.getElementById('message').innerHTML = '<p class="invalid"><i class="fa-solid fa-xmark"></i> There is an error in the data, it hasn\'t been saved.</p>';
+        }
+        if (!validateName()) {
+            document.getElementById('message').innerHTML += '<p>The name must contain only letters and must be 3 characters or more.</p>';
+        }
+        if (!validateLastname()) {
+            document.getElementById('message').innerHTML += '<p>The lastname must contain only letters and must be 3 characters or more.</p>';
+        }
+        if (!validateDni()) {
+            document.getElementById('message').innerHTML += '<p>The DNI must contain numbers and must be 7 characters or more.</p>';
+        }
+        if (!validateDate()) {
+            document.getElementById('message').innerHTML += '<p>The date must be before today and over 18 years</p>';
+        }
+        if (!validatePhone()) {
+            document.getElementById('message').innerHTML += '<p>The phone number must contain numbers and must be 10 characters.</p>';
+        }
+        if (!validateAddress()) {
+            document.getElementById('message').innerHTML += '<p>The address must have letters and numbers with a space between</p>';
+        }
+        if (!validateLocation()) {
+            document.getElementById('message').innerHTML += '<p>The location must be only letters and numbers</p>';
+        }
+        if (!validateZip()) {
+            document.getElementById('message').innerHTML += '<p>Zip code must be only a number with a length of 4 or 5 characters</p>';
+        }
+        if (!validateEmail()) {
+            document.getElementById('message').innerHTML += '<p>The email is not valid</p>';
+        }
+        if (!validatePass()) {
+            document.getElementById('message').innerHTML += '<pThe password is not valid</p>';
+        }
+        if (!validateRepeatPass()) {
+            document.getElementById('message').innerHTML += '<p>Password is not valid and must match</p>';
+        }
     }
-})
+});
+function saveData() {
+    localStorage.setItem('name', formName.value);
+    localStorage.setItem('lastName', lastname.value)
+    localStorage.setItem('email', email.value);
+    localStorage.setItem('dni', dni.value);
+    localStorage.setItem('dob', birth.value);
+    localStorage.setItem('phone', phone.value);
+    localStorage.setItem('address', address.value);
+    localStorage.setItem('location', loc.value);
+    localStorage.setItem('zip', zip.value);
+    localStorage.setItem('email', email.value);
+    localStorage.setItem('password', password.value);
+}
+window.onload = function localDataCompleteForm() {
+    localStorage.getItem('name') !== null ? formName.value = localStorage.getItem('name') : null;
+    localStorage.getItem('lastName') !== null ? lastname.value = localStorage.getItem('lastName') : null;
+    localStorage.getItem('email') !== null ? email.value = localStorage.getItem('email') : null;
+    localStorage.getItem('dni') !== null ? dni.value = localStorage.getItem('dni') : null;
+    localStorage.getItem('dob') !== null ? birth.value = localStorage.getItem('dob') : null;
+    localStorage.getItem('phone') !== null ? phone.value = localStorage.getItem('phone') : null;
+    localStorage.getItem('address') !== null ? address.value = localStorage.getItem('address') : null;
+    localStorage.getItem('location') !== null ? loc.value = localStorage.getItem('location') : null;
+    localStorage.getItem('zip') !== null ? zip.value = localStorage.getItem('zip') : null;
+    localStorage.getItem('password') !== null ? pass.value = localStorage.getItem('password') : null;
+    localStorage.getItem('password') !== null ? repeatPass.value = localStorage.getItem('password') : null;
+}
 formName.addEventListener('blur', validateName);
 function validateName() {
     var cont = 0;
@@ -392,31 +444,4 @@ function fixingRepeatPass() {
     document.getElementById('error-rpass').style.display = 'none';
     document.getElementById('not-match').style.display = 'none';
     document.getElementById('required-rpass').style.display = 'none';
-}
-
-function saveData() {
-    localStorage.setItem('name', formName.value);
-    localStorage.setItem('lastName', lastname.value)
-    localStorage.setItem('email', email.value);
-    localStorage.setItem('dni', dni.value);
-    localStorage.setItem('dob', birth.value);
-    localStorage.setItem('phone', phone.value);
-    localStorage.setItem('address', address.value);
-    localStorage.setItem('location', loc.value);
-    localStorage.setItem('zip', zip.value);
-    localStorage.setItem('email', email.value);
-    localStorage.setItem('password', password.value);
-}
-window.onload = function localDataCompleteForm() {
-    localStorage.getItem('name') !== null ? formName.value = localStorage.getItem('name') : null;
-    localStorage.getItem('lastName') !== null ? lastname.value = localStorage.getItem('lastName') : null;
-    localStorage.getItem('email') !== null ? email.value = localStorage.getItem('email') : null;
-    localStorage.getItem('dni') !== null ? dni.value = localStorage.getItem('dni') : null;
-    localStorage.getItem('dob') !== null ? birth.value = localStorage.getItem('dob') : null;
-    localStorage.getItem('phone') !== null ? phone.value = localStorage.getItem('phone') : null;
-    localStorage.getItem('address') !== null ? address.value = localStorage.getItem('address') : null;
-    localStorage.getItem('location') !== null ? loc.value = localStorage.getItem('location') : null;
-    localStorage.getItem('zip') !== null ? zip.value = localStorage.getItem('zip') : null;
-    localStorage.getItem('password') !== null ? pass.value = localStorage.getItem('password') : null;
-    localStorage.getItem('password') !== null ? repeatPass.value = localStorage.getItem('password') : null;
 }

@@ -68,10 +68,12 @@ input[type="submit"]:hover{
 .message{
     margin: 10px 0;
     font-size: 0.7em;
+    line-height: 1.8em;
 }
 .success{
     margin-bottom: 10px;
     color: green;
+    font-size: 1.5em;
 }
 .invalid{
     margin-bottom: 10px;
