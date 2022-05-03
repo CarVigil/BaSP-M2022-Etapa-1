@@ -1,4 +1,4 @@
-main{
+main {
     max-width: 900px;
     margin: 150px 50px 50px 50px;
 }
@@ -16,11 +16,11 @@ p {
     background-color: #FFF;
     border-radius: 25px;
 }
-.login-form h2{
+.login-form h2 {
     margin-bottom: 20px;
     text-align: center;
 }
-form{
+form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,19 +29,20 @@ form{
     display: flex;
     flex-direction: column;
 }
-.row{
+.row {
     margin-bottom: 25px;
 }
-label{
+label {
     margin-bottom: 10px;
 }
-input[type="text"],input[type="password"]{
+input[type="text"],
+input[type="password"] {
     justify-self: center;
     height: 35px;
     width: 100%;
     min-width: 250px;
 }
-input[type="submit"]{
+input[type="submit"] {
     align-self: center;
     padding: 10px 20px;
     margin: 15px 0;
@@ -53,39 +54,43 @@ input[type="submit"]{
     font-weight: 400;
     text-transform: uppercase;
 }
-input[type="submit"]:hover{
+input[type="submit"]:hover {
     background-color: #FFFFFF;
     border: #373867 solid 1px;
 }
-.recovery{
+.recovery {
     margin-top: 30px;
     text-align: center;
 }
-.recovery a{
+.recovery a {
     padding: 10px 15px;
     color: #373867;
     text-decoration: none;
     background-color: #FAF9F9;
 }
-.message{
+.message {
     margin: 10px 0;
+    font-size: 1em;
+    line-height: 1.3em;
 }
-.error-email, .error-pass, .required{
+.error-email,
+.error-pass,
+.required {
     font-size: 0.75em;
     display: none;
-    color:red;
+    color: red;
 }
-.error{
+.error {
     border: red solid 1px;
 }
-.valid{
+.valid {
     border: green solid 1px;
 }
-.success{
+.success {
     margin-bottom: 10px;
     color: green;
 }
-.invalid{
+.invalid {
     margin-bottom: 10px;
     color: red;
 }
