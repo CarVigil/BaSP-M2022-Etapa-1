@@ -26,9 +26,10 @@ var alphanumeric = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
     'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
     'W', 'X', 'Y', 'Z', '0', '1', '2', '3',
     '4', '5', '6', '7', '8', '9'];
-
 document.getElementById('form').addEventListener('submit', (e) => {
     e.preventDefault();
+    var formatDate = birth.value.split('-');
+    var dob =formatDate.slice(1, 2) +'/' +formatDate.slice(2) +'/' +formatDate.slice(0, 1);
     if (validateName() && validateLastname() && validateDni() && validateDate()
         && validatePhone() && validateAddress() && validateLocation() && validateZip()
         && validateEmail() && validatePass() && validateRepeatPass()) {
@@ -44,6 +45,18 @@ document.getElementById('form').addEventListener('submit', (e) => {
             + 'Email: ' + email.value + '</p><p>'
             + 'Password: ' + pass.value + '</p><p>'
             + 'RepeatPassword: ' + repeatPass.value + '</p><p>';
+        fetch(`https://basp-m2022-api-rest-server.herokuapp.com/signup?name=${formName.value}&lastName=${lastname.value}&dni=${dni.value}&dob=${dob}&phone=${phone.value}&address=${address.value}&city=${loc.value}&zip=${zip.value}&email=${email.value}&password=${password.value}`)
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                }
+                else { throw new Error('Error API') }
+            })
+            .then(data => document.getElementById('message').textContent = data.msg)
+            .catch(error => {
+                console.error(error);
+            });
+            saveData();
     } else if (!validateName() || !validateLastname() || !validateDni() || !validateDate()
         || !validatePhone() || !validateAddress() || !validateLocation() || !validateZip()
         || !validateEmail() || !validatePass() || !validateRepeatPass()) {
@@ -85,7 +98,6 @@ function validateName() {
         return true;
     }
 }
-
 lastname.addEventListener('blur', validateLastname);
 function validateLastname() {
     var cont = 0;
@@ -110,7 +122,6 @@ function validateLastname() {
         return true;
     }
 }
-
 dni.addEventListener('blur', validateDni);
 function validateDni() {
     var cont = 0;
@@ -132,7 +143,6 @@ function validateDni() {
         return true;
     }
 }
-
 birth.addEventListener('blur', validateDate);
 function validateDate() {
     var today = new Date();
@@ -174,9 +184,7 @@ function validatePhone() {
         return true;
     }
 }
-
 address.addEventListener('blur', validateAddress);
-
 function validateAddress() {
     var cont = 0;
     if (address.value === '') {
@@ -205,9 +213,7 @@ function validateAddress() {
         }
     }
 }
-
 loc.addEventListener('blur', validateLocation);
-
 function validateLocation() {
     var cont = 0;
     for (var i = 0; i < loc.value.length; i++) {
@@ -228,10 +234,7 @@ function validateLocation() {
         return true;
     }
 }
-
-
 zip.addEventListener('blur', validateZip);
-
 function validateZip() {
     var cont = 0;
     for (var i = 0; i < zip.value.length; i++) {
@@ -252,8 +255,6 @@ function validateZip() {
         return true;
     }
 }
-
-
 email.addEventListener('blur', validateEmail);
 function validateEmail() {
     if (email.value === '') {
@@ -269,9 +270,7 @@ function validateEmail() {
         return true;
     }
 }
-
 pass.addEventListener('blur', validatePass);
-
 function validatePass() {
     var cont = 0;
     var letters = 0;
@@ -301,7 +300,6 @@ function validatePass() {
         return true;
     }
 }
-
 repeatPass.addEventListener('blur', validateRepeatPass);
 function validateRepeatPass() {
     var passLength = repeatPass.value.length;
@@ -336,75 +334,88 @@ function validateRepeatPass() {
         return true;
     }
 }
-
 formName.addEventListener('focus', fixingName);
-
 function fixingName() {
     document.getElementById('error-name').style.display = 'none';
     document.getElementById('required-name').style.display = 'none';
 }
-
 lastname.addEventListener('focus', fixingLastname);
-
 function fixingLastname() {
     document.getElementById('error-lastname').style.display = 'none';
     document.getElementById('required-lastname').style.display = 'none';
 }
-
 dni.addEventListener('focus', fixingDni);
-
 function fixingDni() {
     document.getElementById('error-dni').style.display = 'none';
     document.getElementById('required-dni').style.display = 'none';
 }
-
 birth.addEventListener('focus', fixingBirth);
-
 function fixingBirth() {
     document.getElementById('error-birth').style.display = 'none';
     document.getElementById('required-birth').style.display = 'none';
 }
-
 phone.addEventListener('focus', fixingPhone);
 function fixingPhone() {
     document.getElementById('error-phone').style.display = 'none';
     document.getElementById('required-phone').style.display = 'none';
 }
-
 address.addEventListener('focus', fixingAddress);
 function fixingAddress() {
     document.getElementById('error-address').style.display = 'none';
     document.getElementById('required-address').style.display = 'none';
 }
-
 loc.addEventListener('focus', fixingLoc);
 function fixingLoc() {
     document.getElementById('error-location').style.display = 'none';
     document.getElementById('required-location').style.display = 'none';
 }
-
 zip.addEventListener('focus', fixingZip);
 function fixingZip() {
     document.getElementById('error-zip').style.display = 'none';
     document.getElementById('required-zip').style.display = 'none';
 }
-
-
 email.addEventListener('focus', fixingEmail);
 function fixingEmail() {
     document.getElementById('error-email').style.display = 'none';
     document.getElementById('required-email').style.display = 'none';
 }
-
 pass.addEventListener('focus', fixingPass);
 function fixingPass() {
     document.getElementById('error-pass').style.display = 'none';
     document.getElementById('required-pass').style.display = 'none';
 }
-
 repeatPass.addEventListener('focus', fixingRepeatPass);
 function fixingRepeatPass() {
     document.getElementById('error-rpass').style.display = 'none';
     document.getElementById('not-match').style.display = 'none';
     document.getElementById('required-rpass').style.display = 'none';
+}
+
+function saveData() {
+    localStorage.setItem('name', formName.value);
+    localStorage.setItem('lastName', lastname.value)
+    localStorage.setItem('email', email.value);
+    localStorage.setItem('dni', dni.value);
+    localStorage.setItem('dob', birth.value);
+    localStorage.setItem('phone', phone.value);
+    localStorage.setItem('address', address.value);
+    localStorage.setItem('location', loc.value);
+    localStorage.setItem('zip', zip.value);
+    localStorage.setItem('email', email.value);
+    localStorage.setItem('password', password.value);
+}
+
+//Complete the form with data from local storage. When refreshing the browser the the form is still completed.
+window.onload = function localDataCompleteForm() {
+    localStorage.getItem('name') !== null ? formName.value = localStorage.getItem('name') : null;
+    localStorage.getItem('lastName') !== null ? lastname.value = localStorage.getItem('lastName') : null;
+    localStorage.getItem('email') !== null ? email.value = localStorage.getItem('email') : null;
+    localStorage.getItem('dni') !== null ? dni.value = localStorage.getItem('dni') : null;
+    localStorage.getItem('dob') !== null ? birth.value = localStorage.getItem('dob') : null;
+    localStorage.getItem('phone') !== null ? phone.value = localStorage.getItem('phone') : null;
+    localStorage.getItem('address') !== null ? address.value = localStorage.getItem('address') : null;
+    localStorage.getItem('location') !== null ? loc.value = localStorage.getItem('location') : null;
+    localStorage.getItem('zip') !== null ? zip.value = localStorage.getItem('zip') : null;
+    localStorage.getItem('password') !== null ? pass.value = localStorage.getItem('password') : null;
+    localStorage.getItem('password') !== null ? repeatPass.value = localStorage.getItem('password') : null;
 }
