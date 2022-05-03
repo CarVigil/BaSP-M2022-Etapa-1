@@ -29,13 +29,19 @@ var alphanumeric = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
 document.getElementById('form').addEventListener('submit', (e) => {
     e.preventDefault();
     var formatDate = birth.value.split('-');
-    var dob =formatDate.slice(1, 2) +'/' +formatDate.slice(2) +'/' +formatDate.slice(0, 1);
+    var dob = formatDate.slice(1, 2) +'/' +formatDate.slice(2) +'/' +formatDate.slice(0, 1);
     if (validateName() && validateLastname() && validateDni() && validateDate()
         && validatePhone() && validateAddress() && validateLocation() && validateZip()
         && validateEmail() && validatePass() && validateRepeatPass()) {
-        document.getElementById('message').classList.add('message');
-        document.getElementById('message').innerHTML = '<p class="success"><i class="fa-solid fa-check"></i> Success</p><p>'
-            + 'Name: ' + formName.value + '</p><p>'
+        fetch(`https://basp-m2022-api-rest-server.herokuapp.com/signup?name=${formName.value}&lastName=${lastname.value}&dni=${dni.value}&dob=${dob}&phone=${phone.value}&address=${address.value}&city=${loc.value}&zip=${zip.value}&email=${email.value}&password=${password.value}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('modal').style.display = 'block';
+            document.getElementById('close').onclick = function () {
+                document.getElementById('modal').style.display = 'none';
+            }
+            document.getElementById('message').classList.add('message');
+            document.getElementById('message').innerHTML = '<p>'+'Name: ' + formName.value + '</p><p>'
             + 'Lastname: ' + lastname.value + '</p><p>'
             + 'DNI: ' + dni.value + '</p><p>'
             + 'Birth date: ' + birth.value + '</p><p>'
@@ -45,18 +51,15 @@ document.getElementById('form').addEventListener('submit', (e) => {
             + 'Email: ' + email.value + '</p><p>'
             + 'Password: ' + pass.value + '</p><p>'
             + 'RepeatPassword: ' + repeatPass.value + '</p><p>';
-        fetch(`https://basp-m2022-api-rest-server.herokuapp.com/signup?name=${formName.value}&lastName=${lastname.value}&dni=${dni.value}&dob=${dob}&phone=${phone.value}&address=${address.value}&city=${loc.value}&zip=${zip.value}&email=${email.value}&password=${password.value}`)
-            .then(response => {
-                if (response.ok) {
-                    return response.json()
+                if (data.success){
+                    document.getElementById('msg-validation').innerHTML = '<p class="success"><i class="fa-solid fa-check"></i> '+data.msg+'</p>';
+                } else {
+                    document.getElementById('msg-validation').innerHTML = '<p class="invalid"><i class="fa-solid fa-xmark"></i> '+data.msg+'</p>';
                 }
-                else { throw new Error('Error API') }
-            })
-            .then(data => document.getElementById('message').textContent = data.msg)
+        })
             .catch(error => {
                 console.error(error);
             });
-            saveData();
     } else if (!validateName() || !validateLastname() || !validateDni() || !validateDate()
         || !validatePhone() || !validateAddress() || !validateLocation() || !validateZip()
         || !validateEmail() || !validatePass() || !validateRepeatPass()) {
@@ -390,6 +393,7 @@ function fixingRepeatPass() {
     document.getElementById('not-match').style.display = 'none';
     document.getElementById('required-rpass').style.display = 'none';
 }
+
 function saveData() {
     localStorage.setItem('name', formName.value);
     localStorage.setItem('lastName', lastname.value)
