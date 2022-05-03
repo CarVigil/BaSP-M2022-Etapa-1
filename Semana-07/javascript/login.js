@@ -25,9 +25,7 @@ document.getElementById('form').addEventListener('submit', (e) => {
                     document.getElementById('modal').style.display = 'none';
                 }
                 document.getElementById('message').classList.add('message');
-                document.getElementById('message').innerHTML = '<p>'
-                    + 'Email: ' + email.value + '</p><p>'
-                    + 'Password: ' + pass.value + '</p>';
+                document.getElementById('message').innerHTML = '<p>Email: ' + email.value +'</p><p>'+ 'Password: '+pass.value + '</p>';
                     if (data.success){
                         document.getElementById('msg-validation').innerHTML = '<p class="success"><i class="fa-solid fa-check"></i> '+data.msg+'</p>';
                     } else {
