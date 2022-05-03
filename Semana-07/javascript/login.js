@@ -13,23 +13,31 @@ var alphabetic = ['a','b','c','d','e','f','g','h',
                     'O','P','Q','R','S','T','U','V',
                     'W','X','Y','Z'];
 var numeric = ['0','1','2','3','4','5','6','7','8','9'];
-var msgValidation = document.getElementById('msg-validation');
 
 document.getElementById('form').addEventListener('submit', (e) => {
     e.preventDefault();
     if (validateEmail() && validatePass()) {
-        document.getElementById('message').classList.add('message');
-        document.getElementById('message').innerHTML ='<p class="success"><i class="fa-solid fa-check"></i> Success</p><p>'
-                                                        +'Email: '+email.value +'</p><p>'
-                                                        +'Password: '+pass.value+'</p>';
         fetch(`https://basp-m2022-api-rest-server.herokuapp.com/login?email=${email.value}&password=${pass.value}`)
-        .then(response => response.json())
-        .then(data => { alert("The request was successful. "+data.msg)
-        })
-        .catch(function (error) {
-            alert("There was an error" +error);
-            console.log('Error' , error);
-    });
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('modal').style.display = 'block';
+                document.getElementById('close').onclick = function () {
+                    document.getElementById('modal').style.display = 'none';
+                }
+                document.getElementById('message').classList.add('message');
+                document.getElementById('message').innerHTML = '<p>'
+                    + 'Email: ' + email.value + '</p><p>'
+                    + 'Password: ' + pass.value + '</p>';
+                    if (data.success){
+                        document.getElementById('msg-validation').innerHTML = '<p class="success"><i class="fa-solid fa-check"></i> '+data.msg+'</p>';
+                    } else {
+                        document.getElementById('msg-validation').innerHTML = '<p class="invalid"><i class="fa-solid fa-xmark"></i> '+data.msg+'</p>';
+                    }
+            })
+            .catch(function (error) {
+                alert("There was an error" + error);
+                console.log('Error', error);
+            });
     } else if (!validateEmail() || !validatePass()) {
         document.getElementById('message').classList.add('message');
         document.getElementById('message').innerHTML ='<p class="invalid"><i class="fa-solid fa-xmark"></i> Error. Wrong email or Password</p><p>'

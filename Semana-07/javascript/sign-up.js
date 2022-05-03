@@ -390,7 +390,6 @@ function fixingRepeatPass() {
     document.getElementById('not-match').style.display = 'none';
     document.getElementById('required-rpass').style.display = 'none';
 }
-
 function saveData() {
     localStorage.setItem('name', formName.value);
     localStorage.setItem('lastName', lastname.value)
@@ -404,8 +403,6 @@ function saveData() {
     localStorage.setItem('email', email.value);
     localStorage.setItem('password', password.value);
 }
-
-//Complete the form with data from local storage. When refreshing the browser the the form is still completed.
 window.onload = function localDataCompleteForm() {
     localStorage.getItem('name') !== null ? formName.value = localStorage.getItem('name') : null;
     localStorage.getItem('lastName') !== null ? lastname.value = localStorage.getItem('lastName') : null;
