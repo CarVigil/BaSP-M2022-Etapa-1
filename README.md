@@ -15,14 +15,18 @@ Be able to see the design of the landing by following this link: https://carvigi
 
 ## Week 5
 ### Working with JavaScript
-This week we must solve the JavaScript exercises, applying the concepts learned from the async material.
-
+This week we must solve the JavaScript exercises, applying the concepts learned from the async material.  
 https://carvigil.github.io/BaSP-M2022-Etapa-1/Semana-05/index.html
 
 ## Week 6
 ### Adding behaviour to the site
 This week we have to create Sign up and Login form and validate both whit JavaScript  
 https://carvigil.github.io/BaSP-M2022-Etapa-1/Semana-06/views/index.html
+
+## Week 7
+### JavaScript Async y Storage
+This week we have to use requests with fetch, validate form with async javascript and localStorage  
+https://carvigil.github.io/BaSP-M2022-Etapa-1/Semana-07/views/index.html
 
 ## AUTHOR
 :woman_technologist: Carla Daiana Vigil  
