@@ -36,6 +36,7 @@ document.getElementById('form').addEventListener('submit', (e) => {
         fetch(`https://basp-m2022-api-rest-server.herokuapp.com/signup?name=${formName.value}&lastName=${lastname.value}&dni=${dni.value}&dob=${dob}&phone=${phone.value}&address=${address.value}&city=${loc.value}&zip=${zip.value}&email=${email.value}&password=${password.value}`)
             .then(response => response.json())
             .then(data => {
+                saveData();
                 document.getElementById('modal').style.display = 'block';
                 document.getElementById('close').onclick = function () {
                     document.getElementById('modal').style.display = 'none';
@@ -115,6 +116,7 @@ function saveData() {
     localStorage.setItem('zip', zip.value);
     localStorage.setItem('email', email.value);
     localStorage.setItem('password', password.value);
+    localStorage.setItem('repeat password', repeatPass.value);
 }
 window.onload = function localDataCompleteForm() {
     localStorage.getItem('name') !== null ? formName.value = localStorage.getItem('name') : null;
@@ -127,7 +129,7 @@ window.onload = function localDataCompleteForm() {
     localStorage.getItem('location') !== null ? loc.value = localStorage.getItem('location') : null;
     localStorage.getItem('zip') !== null ? zip.value = localStorage.getItem('zip') : null;
     localStorage.getItem('password') !== null ? pass.value = localStorage.getItem('password') : null;
-    localStorage.getItem('password') !== null ? repeatPass.value = localStorage.getItem('password') : null;
+    localStorage.getItem('repeat password') !== null ? repeatPass.value = localStorage.getItem('repeat password') : null;
 }
 formName.addEventListener('blur', validateName);
 function validateName() {
