@@ -54,9 +54,10 @@ document.getElementById('form').addEventListener('submit', (e) => {
                     + '</p><p>RepeatPassword: ' + repeatPass.value + '</p>';
                 saveData();
             } else {
+                document.getElementById('message').innerHTML += '<p class="invalid">There was an error</p>';
                 for (var i = 0; data.errors.length; i++) {
                     document.getElementById('message').innerHTML +=
-                        '<p class="invalid">' + data.errors[i].msg + '</p>';
+                        '<p>' + data.errors[i].msg + '</p>';
                 }
             }
         })
