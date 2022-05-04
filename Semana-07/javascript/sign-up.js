@@ -30,20 +30,18 @@ document.getElementById('form').addEventListener('submit', (e) => {
     e.preventDefault();
     var formatDate = birth.value.split('-');
     var dob = formatDate.slice(1, 2) + '/' + formatDate.slice(2) + '/' + formatDate.slice(0, 1);
-    if (validateName() && validateLastname() && validateDni() && validateDate()
-        && validatePhone() && validateAddress() && validateLocation() && validateZip()
-        && validateEmail() && validatePass() && validateRepeatPass()) {
-        fetch(`https://basp-m2022-api-rest-server.herokuapp.com/signup?name=${formName.value}&lastName=${lastname.value}&dni=${dni.value}&dob=${dob}&phone=${phone.value}&address=${address.value}&city=${loc.value}&zip=${zip.value}&email=${email.value}&password=${password.value}`)
-            .then(response => response.json())
-            .then(data => {
-                saveData();
-                document.getElementById('modal').style.display = 'block';
-                document.getElementById('close').onclick = function () {
-                    document.getElementById('modal').style.display = 'none';
-                }
-                document.getElementById('message').classList.add('message');
-                document.getElementById('message').innerHTML =
-                '<p class="success"><i class="fa-solid fa-check"></i> '+ data.msg + '</p>';
+    fetch(`https://basp-m2022-api-rest-server.herokuapp.com/signup?name=${formName.value}&lastName=${lastname.value}&dni=${dni.value}&dob=${dob}&phone=${phone.value}&address=${address.value}&city=${loc.value}&zip=${zip.value}&email=${email.value}&password=${password.value}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('modal').style.display = 'block';
+            document.getElementById('close').onclick = function () {
+                document.getElementById('modal').style.display = 'none';
+            }
+            document.getElementById('message').classList.add('message');
+            document.getElementById('message').innerHTML = '<h3>Request successful</h3>';
+            if (data.success) {
+                document.getElementById('message').innerHTML +=
+                    '<p class="success"><i class="fa-solid fa-check"></i> ' + data.msg + '</p>';
                 document.getElementById('message').innerHTML += '<p>Name: ' + formName.value
                     + '</p><p>Lastname: ' + lastname.value
                     + '</p><p>DNI: ' + dni.value
@@ -54,55 +52,15 @@ document.getElementById('form').addEventListener('submit', (e) => {
                     + '</p><p>Email: ' + email.value
                     + '</p><p>Password: ' + pass.value
                     + '</p><p>RepeatPassword: ' + repeatPass.value + '</p>';
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    } else {
-        document.getElementById('modal').style.display = 'block';
-        document.getElementById('close').onclick = function () {
-            document.getElementById('modal').style.display = 'none';
-        }
-        if (!validateName() || !validateLastname() || !validateDni() || !validateDate()
-            || !validatePhone() || !validateAddress() || !validateLocation() || !validateZip()
-            || !validateEmail() || !validatePass() || !validateRepeatPass()) {
-            document.getElementById('message').classList.add('message');
-            document.getElementById('message').innerHTML = '<p class="invalid"><i class="fa-solid fa-xmark"></i> There is an error in the data, it hasn\'t been saved.</p>';
-        }
-        if (!validateName()) {
-            document.getElementById('message').innerHTML += '<p>The name must contain only letters and must be 3 characters or more.</p>';
-        }
-        if (!validateLastname()) {
-            document.getElementById('message').innerHTML += '<p>The lastname must contain only letters and must be 3 characters or more.</p>';
-        }
-        if (!validateDni()) {
-            document.getElementById('message').innerHTML += '<p>The DNI must contain numbers and must be 7 characters or more.</p>';
-        }
-        if (!validateDate()) {
-            document.getElementById('message').innerHTML += '<p>The date must be before today and over 18 years</p>';
-        }
-        if (!validatePhone()) {
-            document.getElementById('message').innerHTML += '<p>The phone number must contain numbers and must be 10 characters.</p>';
-        }
-        if (!validateAddress()) {
-            document.getElementById('message').innerHTML += '<p>The address must have letters and numbers with a space between</p>';
-        }
-        if (!validateLocation()) {
-            document.getElementById('message').innerHTML += '<p>The location must be only letters and numbers</p>';
-        }
-        if (!validateZip()) {
-            document.getElementById('message').innerHTML += '<p>Zip code must be only a number with a length of 4 or 5 characters</p>';
-        }
-        if (!validateEmail()) {
-            document.getElementById('message').innerHTML += '<p>The email is not valid</p>';
-        }
-        if (!validatePass()) {
-            document.getElementById('message').innerHTML += '<pThe password is not valid</p>';
-        }
-        if (!validateRepeatPass()) {
-            document.getElementById('message').innerHTML += '<p>Password is not valid and must match</p>';
-        }
-    }
+                saveData();
+            } else {
+                for (var i = 0; data.errors.length; i++) {
+                    document.getElementById('message').innerHTML +=
+                        '<p class="invalid">' + data.errors[i].msg + '</p>';
+                }
+            }
+        })
+        .catch(error => console.log(error));
 });
 function saveData() {
     localStorage.setItem('name', formName.value);
@@ -131,7 +89,6 @@ window.onload = function localDataCompleteForm() {
     localStorage.getItem('password') !== null ? pass.value = localStorage.getItem('password') : null;
     localStorage.getItem('repeat password') !== null ? repeatPass.value = localStorage.getItem('repeat password') : null;
 }
-formName.addEventListener('blur', validateName);
 function validateName() {
     var cont = 0;
     var numbers = 0;
@@ -155,7 +112,6 @@ function validateName() {
         return true;
     }
 }
-lastname.addEventListener('blur', validateLastname);
 function validateLastname() {
     var cont = 0;
     var numbers = 0;
@@ -179,7 +135,6 @@ function validateLastname() {
         return true;
     }
 }
-dni.addEventListener('blur', validateDni);
 function validateDni() {
     var cont = 0;
     for (var i = 0; i < dni.value.length; i++) {
@@ -200,7 +155,6 @@ function validateDni() {
         return true;
     }
 }
-birth.addEventListener('blur', validateDate);
 function validateDate() {
     var today = new Date();
     if (birth.value.substring(8) >= today.getDate()
@@ -219,8 +173,6 @@ function validateDate() {
         return true;
     }
 }
-
-phone.addEventListener('blur', validatePhone);
 function validatePhone() {
     var cont = 0;
     for (var i = 0; i < phone.value.length; i++) {
@@ -241,7 +193,6 @@ function validatePhone() {
         return true;
     }
 }
-address.addEventListener('blur', validateAddress);
 function validateAddress() {
     var cont = 0;
     if (address.value === '') {
@@ -254,8 +205,8 @@ function validateAddress() {
             address.classList.add('error');
             return false;
         } else {
-            for (var i = 0; i < address.value.indexOf(' '); i++) {
-                if (!alphabetic.includes(address.value[i]) && address.value[i] != ' ' && !numeric.includes(address.value[i])) {
+            for (var i = 0; i < address.value.length; i++) {
+                if (!alphanumeric.includes(address.value[i]) && address.value[i] != ' ') {
                     cont++;
                 }
             }
@@ -270,7 +221,6 @@ function validateAddress() {
         }
     }
 }
-loc.addEventListener('blur', validateLocation);
 function validateLocation() {
     var cont = 0;
     for (var i = 0; i < loc.value.length; i++) {
@@ -291,7 +241,6 @@ function validateLocation() {
         return true;
     }
 }
-zip.addEventListener('blur', validateZip);
 function validateZip() {
     var cont = 0;
     for (var i = 0; i < zip.value.length; i++) {
@@ -312,7 +261,6 @@ function validateZip() {
         return true;
     }
 }
-email.addEventListener('blur', validateEmail);
 function validateEmail() {
     if (email.value === '') {
         document.getElementById('required-email').style.display = 'block';
@@ -327,7 +275,6 @@ function validateEmail() {
         return true;
     }
 }
-pass.addEventListener('blur', validatePass);
 function validatePass() {
     var cont = 0;
     var letters = 0;
@@ -357,7 +304,6 @@ function validatePass() {
         return true;
     }
 }
-repeatPass.addEventListener('blur', validateRepeatPass);
 function validateRepeatPass() {
     var passLength = repeatPass.value.length;
     var cont = 0;
@@ -391,59 +337,70 @@ function validateRepeatPass() {
         return true;
     }
 }
-formName.addEventListener('focus', fixingName);
 function fixingName() {
     document.getElementById('error-name').style.display = 'none';
     document.getElementById('required-name').style.display = 'none';
 }
-lastname.addEventListener('focus', fixingLastname);
 function fixingLastname() {
     document.getElementById('error-lastname').style.display = 'none';
     document.getElementById('required-lastname').style.display = 'none';
 }
-dni.addEventListener('focus', fixingDni);
 function fixingDni() {
     document.getElementById('error-dni').style.display = 'none';
     document.getElementById('required-dni').style.display = 'none';
 }
-birth.addEventListener('focus', fixingBirth);
 function fixingBirth() {
     document.getElementById('error-birth').style.display = 'none';
     document.getElementById('required-birth').style.display = 'none';
 }
-phone.addEventListener('focus', fixingPhone);
 function fixingPhone() {
     document.getElementById('error-phone').style.display = 'none';
     document.getElementById('required-phone').style.display = 'none';
 }
-address.addEventListener('focus', fixingAddress);
 function fixingAddress() {
     document.getElementById('error-address').style.display = 'none';
     document.getElementById('required-address').style.display = 'none';
 }
-loc.addEventListener('focus', fixingLoc);
 function fixingLoc() {
     document.getElementById('error-location').style.display = 'none';
     document.getElementById('required-location').style.display = 'none';
 }
-zip.addEventListener('focus', fixingZip);
 function fixingZip() {
     document.getElementById('error-zip').style.display = 'none';
     document.getElementById('required-zip').style.display = 'none';
 }
-email.addEventListener('focus', fixingEmail);
 function fixingEmail() {
     document.getElementById('error-email').style.display = 'none';
     document.getElementById('required-email').style.display = 'none';
 }
-pass.addEventListener('focus', fixingPass);
 function fixingPass() {
     document.getElementById('error-pass').style.display = 'none';
     document.getElementById('required-pass').style.display = 'none';
 }
-repeatPass.addEventListener('focus', fixingRepeatPass);
 function fixingRepeatPass() {
     document.getElementById('error-rpass').style.display = 'none';
     document.getElementById('not-match').style.display = 'none';
     document.getElementById('required-rpass').style.display = 'none';
 }
+formName.addEventListener('blur', validateName);
+lastname.addEventListener('blur', validateLastname);
+dni.addEventListener('blur', validateDni);
+birth.addEventListener('blur', validateDate);
+phone.addEventListener('blur', validatePhone);
+address.addEventListener('blur', validateAddress);
+loc.addEventListener('blur', validateLocation);
+zip.addEventListener('blur', validateZip);
+email.addEventListener('blur', validateEmail);
+pass.addEventListener('blur', validatePass);
+repeatPass.addEventListener('blur', validateRepeatPass);
+formName.addEventListener('focus', fixingName);
+lastname.addEventListener('focus', fixingLastname);
+dni.addEventListener('focus', fixingDni);
+birth.addEventListener('focus', fixingBirth);
+phone.addEventListener('focus', fixingPhone);
+address.addEventListener('focus', fixingAddress);
+loc.addEventListener('focus', fixingLoc);
+zip.addEventListener('focus', fixingZip);
+email.addEventListener('focus', fixingEmail);
+pass.addEventListener('focus', fixingPass);
+repeatPass.addEventListener('focus', fixingRepeatPass);
