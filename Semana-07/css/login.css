@@ -36,6 +36,7 @@ label {
     margin-bottom: 10px;
 }
 input[type="text"],
+input[type="email"],
 input[type="password"] {
     justify-self: center;
     height: 35px;
