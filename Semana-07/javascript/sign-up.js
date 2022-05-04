@@ -11,85 +11,21 @@ var pass = document.getElementById('password');
 var repeatPass = document.getElementById('repeat-pass');
 var re = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 var alphabetic = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
-    'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
-    'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
-    'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F',
-    'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-    'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
-    'W', 'X', 'Y', 'Z'];
+                'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+                'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F',
+                'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+                'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+                'W', 'X', 'Y', 'Z'];
 var numeric = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 var alphanumeric = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
-    'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
-    'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
-    'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F',
-    'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-    'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
-    'W', 'X', 'Y', 'Z', '0', '1', '2', '3',
-    '4', '5', '6', '7', '8', '9'];
-document.getElementById('form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    var formatDate = birth.value.split('-');
-    var dob = formatDate.slice(1, 2) + '/' + formatDate.slice(2) + '/' + formatDate.slice(0, 1);
-    fetch(`https://basp-m2022-api-rest-server.herokuapp.com/signup?name=${formName.value}&lastName=${lastname.value}&dni=${dni.value}&dob=${dob}&phone=${phone.value}&address=${address.value}&city=${loc.value}&zip=${zip.value}&email=${email.value}&password=${password.value}`)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('modal').style.display = 'block';
-            document.getElementById('close').onclick = function () {
-                document.getElementById('modal').style.display = 'none';
-            }
-            document.getElementById('message').classList.add('message');
-            document.getElementById('message').innerHTML = '<h3>Request successful</h3>';
-            if (data.success) {
-                document.getElementById('message').innerHTML +=
-                    '<p class="success"><i class="fa-solid fa-check"></i> ' + data.msg + '</p>';
-                document.getElementById('message').innerHTML += '<p>Name: ' + formName.value
-                    + '</p><p>Lastname: ' + lastname.value
-                    + '</p><p>DNI: ' + dni.value
-                    + '</p><p>Birth date: ' + birth.value
-                    + '</p><p>Phone: ' + address.value
-                    + '</p><p>Location: ' + loc.value
-                    + '</p><p>Zip code: ' + zip.value
-                    + '</p><p>Email: ' + email.value
-                    + '</p><p>Password: ' + pass.value
-                    + '</p><p>RepeatPassword: ' + repeatPass.value + '</p>';
-                saveData();
-            } else {
-                document.getElementById('message').innerHTML += '<p class="invalid">There was an error</p>';
-                for (var i = 0; data.errors.length; i++) {
-                    document.getElementById('message').innerHTML +=
-                        '<p>' + data.errors[i].msg + '</p>';
-                }
-            }
-        })
-        .catch(error => console.log(error));
-});
-function saveData() {
-    localStorage.setItem('name', formName.value);
-    localStorage.setItem('lastName', lastname.value)
-    localStorage.setItem('email', email.value);
-    localStorage.setItem('dni', dni.value);
-    localStorage.setItem('dob', birth.value);
-    localStorage.setItem('phone', phone.value);
-    localStorage.setItem('address', address.value);
-    localStorage.setItem('location', loc.value);
-    localStorage.setItem('zip', zip.value);
-    localStorage.setItem('email', email.value);
-    localStorage.setItem('password', password.value);
-    localStorage.setItem('repeat password', repeatPass.value);
-}
-window.onload = function localDataCompleteForm() {
-    localStorage.getItem('name') !== null ? formName.value = localStorage.getItem('name') : null;
-    localStorage.getItem('lastName') !== null ? lastname.value = localStorage.getItem('lastName') : null;
-    localStorage.getItem('email') !== null ? email.value = localStorage.getItem('email') : null;
-    localStorage.getItem('dni') !== null ? dni.value = localStorage.getItem('dni') : null;
-    localStorage.getItem('dob') !== null ? birth.value = localStorage.getItem('dob') : null;
-    localStorage.getItem('phone') !== null ? phone.value = localStorage.getItem('phone') : null;
-    localStorage.getItem('address') !== null ? address.value = localStorage.getItem('address') : null;
-    localStorage.getItem('location') !== null ? loc.value = localStorage.getItem('location') : null;
-    localStorage.getItem('zip') !== null ? zip.value = localStorage.getItem('zip') : null;
-    localStorage.getItem('password') !== null ? pass.value = localStorage.getItem('password') : null;
-    localStorage.getItem('repeat password') !== null ? repeatPass.value = localStorage.getItem('repeat password') : null;
-}
+                    'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+                    'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+                    'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F',
+                    'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+                    'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+                    'W', 'X', 'Y', 'Z', '0', '1', '2', '3',
+                    '4', '5', '6', '7', '8', '9'];
 function validateName() {
     var cont = 0;
     var numbers = 0;
@@ -383,6 +319,33 @@ function fixingRepeatPass() {
     document.getElementById('not-match').style.display = 'none';
     document.getElementById('required-rpass').style.display = 'none';
 }
+function saveData() {
+    localStorage.setItem('name', formName.value);
+    localStorage.setItem('lastName', lastname.value)
+    localStorage.setItem('email', email.value);
+    localStorage.setItem('dni', dni.value);
+    localStorage.setItem('dob', birth.value);
+    localStorage.setItem('phone', phone.value);
+    localStorage.setItem('address', address.value);
+    localStorage.setItem('location', loc.value);
+    localStorage.setItem('zip', zip.value);
+    localStorage.setItem('email', email.value);
+    localStorage.setItem('password', password.value);
+    localStorage.setItem('repeat password', repeatPass.value);
+}
+window.onload = function localDataCompleteForm() {
+    localStorage.getItem('name') !== null ? formName.value = localStorage.getItem('name') : null;
+    localStorage.getItem('lastName') !== null ? lastname.value = localStorage.getItem('lastName') : null;
+    localStorage.getItem('email') !== null ? email.value = localStorage.getItem('email') : null;
+    localStorage.getItem('dni') !== null ? dni.value = localStorage.getItem('dni') : null;
+    localStorage.getItem('dob') !== null ? birth.value = localStorage.getItem('dob') : null;
+    localStorage.getItem('phone') !== null ? phone.value = localStorage.getItem('phone') : null;
+    localStorage.getItem('address') !== null ? address.value = localStorage.getItem('address') : null;
+    localStorage.getItem('location') !== null ? loc.value = localStorage.getItem('location') : null;
+    localStorage.getItem('zip') !== null ? zip.value = localStorage.getItem('zip') : null;
+    localStorage.getItem('password') !== null ? pass.value = localStorage.getItem('password') : null;
+    localStorage.getItem('repeat password') !== null ? repeatPass.value = localStorage.getItem('repeat password') : null;
+}
 formName.addEventListener('blur', validateName);
 lastname.addEventListener('blur', validateLastname);
 dni.addEventListener('blur', validateDni);
@@ -405,3 +368,40 @@ zip.addEventListener('focus', fixingZip);
 email.addEventListener('focus', fixingEmail);
 pass.addEventListener('focus', fixingPass);
 repeatPass.addEventListener('focus', fixingRepeatPass);
+document.getElementById('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    var formatDate = birth.value.split('-');
+    var dob = formatDate.slice(1, 2) + '/' + formatDate.slice(2) + '/' + formatDate.slice(0, 1);
+    fetch(`https://basp-m2022-api-rest-server.herokuapp.com/signup?name=${formName.value}&lastName=${lastname.value}&dni=${dni.value}&dob=${dob}&phone=${phone.value}&address=${address.value}&city=${loc.value}&zip=${zip.value}&email=${email.value}&password=${password.value}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('modal').style.display = 'block';
+            document.getElementById('close').onclick = function () {
+                document.getElementById('modal').style.display = 'none';
+            }
+            document.getElementById('message').classList.add('message');
+            document.getElementById('message').innerHTML = '<h3>Request successful</h3>';
+            if (data.success) {
+                document.getElementById('message').innerHTML +=
+                    '<p class="success"><i class="fa-solid fa-check"></i> ' + data.msg + '</p>';
+                document.getElementById('message').innerHTML += '<p>Name: ' + formName.value
+                    + '</p><p>Lastname: ' + lastname.value
+                    + '</p><p>DNI: ' + dni.value
+                    + '</p><p>Birth date: ' + birth.value
+                    + '</p><p>Phone: ' + address.value
+                    + '</p><p>Location: ' + loc.value
+                    + '</p><p>Zip code: ' + zip.value
+                    + '</p><p>Email: ' + email.value
+                    + '</p><p>Password: ' + pass.value
+                    + '</p><p>RepeatPassword: ' + repeatPass.value + '</p>';
+                saveData();
+            } else {
+                document.getElementById('message').innerHTML += '<p class="invalid">There was an error</p>';
+                for (var i = 0; data.errors.length; i++) {
+                    document.getElementById('message').innerHTML +=
+                        '<p>' + data.errors[i].msg + '</p>';
+                }
+            }
+        })
+        .catch(error => console.log(error));
+});
