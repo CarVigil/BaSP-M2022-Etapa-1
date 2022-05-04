@@ -70,38 +70,23 @@ email.addEventListener('focus', fixingError);
 pass.addEventListener('focus', fixingErrorPass);
 document.getElementById('form').addEventListener('submit', (e) => {
     e.preventDefault();
-    if (validateEmail() && validatePass()) {
-        fetch(`https://basp-m2022-api-rest-server.herokuapp.com/login?email=${email.value}&password=${pass.value}`)
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('modal').style.display = 'block';
-                document.getElementById('close').onclick = function () {
-                    document.getElementById('modal').style.display = 'none';
-                }
-                document.getElementById('message').innerHTML = '<h3>Request successful</h3>';
-                if (data.success) {
-                    document.getElementById('message').innerHTML += '<p class="success"><i class="fa-solid fa-check"></i> ' + data.msg + '</p>';
-                } else {
-                    document.getElementById('message').innerHTML += '<p class="invalid"><i class="fa-solid fa-xmark"></i> ' + data.msg + '</p>';
-                }
-                document.getElementById('message').classList.add('message');
-                document.getElementById('message').innerHTML += '<p>Email: ' + email.value + '</p><p>' + 'Password: ' + pass.value + '</p>';
-            })
-            .catch(function (error) {
-                alert("There was an error " + error);
-            });
-    } else {
-        document.getElementById('modal').style.display = 'block';
-        document.getElementById('close').onclick = function () {
-            document.getElementById('modal').style.display = 'none';
-        }
-        document.getElementById('message').classList.add('message');
-        document.getElementById('message').innerHTML = '<p class="invalid"><i class="fa-solid fa-xmark"></i> Error</p>';
-        if (!validateEmail()) {
-            document.getElementById('message').innerHTML += '<p>The email is not valid</p>';
-        }
-        if (!validatePass()) {
-            document.getElementById('message').innerHTML += '<p>The password is not valid</p>';
-        }
-    }
+    fetch(`https://basp-m2022-api-rest-server.herokuapp.com/login?email=${email.value}&password=${pass.value}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('modal').style.display = 'block';
+            document.getElementById('close').onclick = function () {
+                document.getElementById('modal').style.display = 'none';
+            }
+            document.getElementById('message').innerHTML = '<h3>Request successful</h3>';
+            if (data.success) {
+                document.getElementById('message').innerHTML += '<p class="success"><i class="fa-solid fa-check"></i> ' + data.msg + '</p>';
+            } else {
+                document.getElementById('message').innerHTML += '<p class="invalid"><i class="fa-solid fa-xmark"></i> ' + data.msg + '</p>';
+            }
+            document.getElementById('message').classList.add('message');
+            document.getElementById('message').innerHTML += '<p>Email: ' + email.value + '</p><p>' + 'Password: ' + pass.value + '</p>';
+        })
+        .catch(function (error) {
+            alert("There was an error " + error);
+        });
 })
