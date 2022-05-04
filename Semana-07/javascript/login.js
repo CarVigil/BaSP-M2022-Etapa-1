@@ -23,10 +23,11 @@ document.getElementById('form').addEventListener('submit', (e) => {
                 document.getElementById('close').onclick = function () {
                     document.getElementById('modal').style.display = 'none';
                 }
+                document.getElementById('message').innerHTML ='<h3>Request successful</h3>';
                 if (data.success) {
-                    document.getElementById('message').innerHTML = '<p class="success"><i class="fa-solid fa-check"></i> ' + data.msg + '</p>';
+                    document.getElementById('message').innerHTML += '<p class="success"><i class="fa-solid fa-check"></i> ' + data.msg + '</p>';
                 } else {
-                    document.getElementById('message').innerHTML = '<p class="invalid"><i class="fa-solid fa-xmark"></i> ' + data.msg + '</p>';
+                    document.getElementById('message').innerHTML += '<p class="invalid"><i class="fa-solid fa-xmark"></i> ' + data.msg + '</p>';
                 }
                 document.getElementById('message').classList.add('message');
                 document.getElementById('message').innerHTML += '<p>Email: ' + email.value + '</p><p>' + 'Password: ' + pass.value + '</p>';
