@@ -25,7 +25,7 @@ https://carvigil.github.io/BaSP-M2022-Etapa-1/Semana-06/views/index.html
 
 ## Week 7
 ### JavaScript Async y Storage
-In this problem we continue to work on what we developed in the previous one.
+In this problem we continue working on what we developed in the previous one.
 In each form (login and sign up) we must make an HTTP request using the Javascript Fetch method, sending all the data loaded in the form. In the registration form we must save all the information written in the form in the browser using "localStorage" so that when reloading the site the data is automatically loaded in the form  
 https://carvigil.github.io/BaSP-M2022-Etapa-1/Semana-07/views/index.html
 
